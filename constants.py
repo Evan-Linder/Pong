@@ -9,8 +9,8 @@ PADDLE_HEIGHT = 80
 #use this constant to offset the padldles around 20 pixels off the edge
 PADDLE_OFFSET_X = 20
 
-
-
+#paddle velocity 
+PADDLE_SPEED = 6
 
 #set color constants (red for background, white for player paddles).
 RED = (192, 57, 43)
