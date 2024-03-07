@@ -1,15 +1,23 @@
+'''
+Evan Linder
+Pong Game
+Start date: 3/7/23
+End date: 
+'''
+
+
 import pygame
-import constants, paddles, fpsController, ball
+import constants, paddles, ball
 
 
-#Initalize pygame: this is required.
+# Initalize pygame: this is required.
 pygame.init()
 
 
 
 # setup the window: make it a tuple so it is unmutable and avoid errors.
 window = pygame.display.set_mode((constants.WINDOW_WIDTH, constants.WINDOW_HEIGHT))
-pygame.display.set_caption(f"Evan's Pong Game")
+pygame.display.set_caption(f"Pong Game")
 
 # create the main game loop.
 loop_active = True
@@ -24,13 +32,11 @@ while loop_active:
         
         # check if the W or S key is pressed.
         elif event.type == pygame.KEYDOWN: 
-
-            # if w is pressed move paddle A up on the y axis.
             if event.key == pygame.K_w: 
                  paddles.paddle_direction_a -= constants.PADDLE_SPEED
-            # if s is pressed move paddle A down on the y axis.
             if event.key == pygame.K_s: 
                  paddles.paddle_direction_a += constants.PADDLE_SPEED 
+
 
         # stop paddle when key is unpressed (inverse math operations).
         elif event.type == pygame.KEYUP:
@@ -41,27 +47,30 @@ while loop_active:
 
 
   
-    #call the function from paddles to clean up code.
+    # call the functions from paddles and ball to clean up the code.
     paddles.paddle_a_movement()
+    paddles.paddle_b_movement(ball)
     ball.ball_movement()
     
 
-    #set background to red.
+    # set background to red.
     window.fill(constants.RED)
+    
 
-    #draw paddles and the ball.
+    # draw the paddles and ball.
     pygame.draw.rect(window, constants.WHITE, paddles.paddle_a)
     pygame.draw.rect(window, constants.WHITE, paddles.paddle_b)
     pygame.draw.rect(window, constants.WHITE, ball.ball)
 
+    # draw scoring system
+
+    # create a fps controller to avoid lag and screen tearing on low end pc's, set the fps controller tick to 60 Fps.
+    fps_controller = pygame.time.Clock()
+    fps_controller.tick(constants.FPS)
 
 
+    # tell the window to update every itteration of the loop. 
     pygame.display.flip()
-
-    #set the fps controller tick (60 Fps).
-    fpsController.fps_controller.tick(constants.FPS)
-
-
 
 
 
