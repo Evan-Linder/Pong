@@ -1,5 +1,5 @@
 import pygame
-import constants, paddles, fpsController
+import constants, paddles, fpsController, ball
 
 
 #Initalize pygame: this is required.
@@ -25,10 +25,10 @@ while loop_active:
         # check if the W or S key is pressed.
         elif event.type == pygame.KEYDOWN: 
 
-            # if w is pressed move paddles up on the y axis.
+            # if w is pressed move paddle A up on the y axis.
             if event.key == pygame.K_w: 
                  paddles.paddle_a_velocity -= constants.PADDLE_SPEED
-            # if s is pressed move paddles down on the y axis.
+            # if s is pressed move paddle A down on the y axis.
             if event.key == pygame.K_s: 
                  paddles.paddle_a_velocity += constants.PADDLE_SPEED 
 
@@ -48,9 +48,11 @@ while loop_active:
     #set background to red.
     window.fill(constants.RED)
 
-    #draw paddle A
+    #draw paddles and the ball.
     pygame.draw.rect(window, constants.WHITE, paddles.paddle_a)
     pygame.draw.rect(window, constants.WHITE, paddles.paddle_b)
+    pygame.draw.rect(window, constants.WHITE, ball.ball)
+
 
 
     pygame.display.flip()

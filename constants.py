@@ -16,5 +16,10 @@ PADDLE_SPEED = 6
 RED = (192, 57, 43)
 WHITE = (255, 255, 255) 
 
+#set ball constants
+BALL_SIZE = 10 
+BALL_SPEED = 5
+
 #set fps tick
 FPS = 60
+
