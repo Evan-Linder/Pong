@@ -1,5 +1,5 @@
 import pygame
-import constants
+import constants, paddles
 
 #Initalize pygame: this is required
 pygame.init()
@@ -16,15 +16,21 @@ loop_active = True
 while loop_active:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            loop_active == False
+             #quit the game
+             loop_active == False
+             pygame.quit()
+                
     
     #set background to red
     window.fill(constants.RED)
 
+    #draw paddle A
+    pygame.draw.rect(window, constants.WHITE, paddles.paddle_a)
+
+
     pygame.display.flip()
 
-#quit the game
-pygame.quit()
+
 
 
 
