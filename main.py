@@ -27,22 +27,23 @@ while loop_active:
 
             # if w is pressed move paddle A up on the y axis.
             if event.key == pygame.K_w: 
-                 paddles.paddle_a_velocity -= constants.PADDLE_SPEED
+                 paddles.paddle_direction_a -= constants.PADDLE_SPEED
             # if s is pressed move paddle A down on the y axis.
             if event.key == pygame.K_s: 
-                 paddles.paddle_a_velocity += constants.PADDLE_SPEED 
+                 paddles.paddle_direction_a += constants.PADDLE_SPEED 
 
         # stop paddle when key is unpressed (inverse math operations).
         elif event.type == pygame.KEYUP:
              if event.key == pygame.K_w:
-                  paddles.paddle_a_velocity += constants.PADDLE_SPEED 
+                  paddles.paddle_direction_a += constants.PADDLE_SPEED 
              if event.key == pygame.K_s:
-                 paddles.paddle_a_velocity -= constants.PADDLE_SPEED 
+                 paddles.paddle_direction_a -= constants.PADDLE_SPEED 
 
 
   
     #call the function from paddles to clean up code.
-    paddles.handle_paddle_a_update()
+    paddles.paddle_a_movement()
+    ball.ball_movement()
     
 
     #set background to red.
