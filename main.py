@@ -1,6 +1,7 @@
 import pygame
 import constants, paddles, fpsController
 
+
 #Initalize pygame: this is required.
 pygame.init()
 
@@ -19,7 +20,7 @@ while loop_active:
         # quit the game
         if event.type == pygame.QUIT:
              loop_active == False
-             pygame.QUIT()
+             pygame.quit()
         
         # check if the W or S key is pressed.
         elif event.type == pygame.KEYDOWN: 
@@ -40,14 +41,9 @@ while loop_active:
 
 
   
-
-    #movement of paddle A        
-    paddles.paddle_a.y += paddles.paddle_a_velocity  
-
-    if paddles.paddle_a.top < 0:
-         paddles.paddle_a.top = 0
-    elif paddles.paddle_a.bottom > constants.WINDOW_HEIGHT:
-         paddles.paddle_a.bottom = constants.WINDOW_HEIGHT
+    #call the function from paddles to clean up code.
+    paddles.handle_paddle_a_update()
+    
 
     #set background to red.
     window.fill(constants.RED)
