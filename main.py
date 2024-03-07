@@ -27,7 +27,7 @@ while loop_active:
             # if w is pressed move paddles up on the y axis.
             if event.key == pygame.K_w: 
                  paddles.paddle_a_velocity -= constants.PADDLE_SPEED
-            # if w is pressed move paddles down on the y axis.
+            # if s is pressed move paddles down on the y axis.
             if event.key == pygame.K_s: 
                  paddles.paddle_a_velocity += constants.PADDLE_SPEED 
 
@@ -37,12 +37,18 @@ while loop_active:
                   paddles.paddle_a_velocity += constants.PADDLE_SPEED 
              if event.key == pygame.K_s:
                  paddles.paddle_a_velocity -= constants.PADDLE_SPEED 
-            
-                   
 
-    #movement of paddle a on the y axis.
-    paddles.paddle_a.y += paddles.paddle_a_velocity 
-    
+
+  
+
+    #movement of paddle A        
+    paddles.paddle_a.y += paddles.paddle_a_velocity  
+
+    if paddles.paddle_a.top < 0:
+         paddles.paddle_a.top = 0
+    elif paddles.paddle_a.bottom > constants.WINDOW_HEIGHT:
+         paddles.paddle_a.bottom = constants.WINDOW_HEIGHT
+
     #set background to red.
     window.fill(constants.RED)
 

@@ -14,6 +14,11 @@ paddle_b.right = constants.WINDOW_WIDTH - constants.PADDLE_OFFSET_X
 
 
 
+    
+
+
+
+
 
 
 
