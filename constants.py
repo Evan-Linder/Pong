@@ -10,7 +10,7 @@ PADDLE_HEIGHT = 80
 PADDLE_OFFSET_X = 20
 
 # paddle velocity 
-PADDLE_SPEED = 6
+PADDLE_SPEED = 10
 
 # set color constants (red for background, white for player paddles).
 RED = (192, 57, 43)
@@ -18,8 +18,12 @@ WHITE = (255, 255, 255)
 
 # set ball constants.
 BALL_SIZE = 10 
-BALL_SPEED = 5
+BALL_SPEED = 7
 
 # set fps tick
 FPS = 60
+
+# set button
+BUTTON_WIDTH = 100
+BUTTON_HEIGHT = 50
 

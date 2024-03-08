@@ -1,5 +1,5 @@
-import pygame
-import constants, paddles
+import pygame, constants, paddles
+
 
 
 # allignment of the ball
@@ -19,20 +19,14 @@ def reset_ball():
 
 # make the ball bounce only off the paddles and top and bottom edge.
 def ball_movement():
-    global ball_direction_x, ball_direction_y
+    global ball_direction_x, ball_direction_y, player_a_score, player_b_score
 
     ball.x += ball_direction_x
     ball.y += ball_direction_y
-    
+
     # Paddles (reverses x axis direction using colliderect only if it hits the paddle).
     if ball.colliderect(paddles.paddle_a) or ball.colliderect(paddles.paddle_b):
         ball_direction_x *= -1
-    
-    # Check if ball has gone out of bounds and reset if necessary.
-    if ball.right > constants.WINDOW_WIDTH:  
-         reset_ball()
-    elif ball.left < 0:  
-         reset_ball()
     
     # Top and bottom (reverses y axis direction)
     if ball.top < 0:
@@ -41,5 +35,12 @@ def ball_movement():
     elif ball.bottom > constants.WINDOW_HEIGHT:
         ball.bottom = constants.WINDOW_HEIGHT
         ball_direction_y *= -1
-
+    # Check if ball has gone out of bounds and reset if necessary.
+    if ball.right > constants.WINDOW_WIDTH:
+         paddles.player_a_score += 1
+         reset_ball()
+    elif ball.left < 0: 
+         paddles.player_b_score += 1 
+         reset_ball()
+    
     
