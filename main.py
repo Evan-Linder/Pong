@@ -88,19 +88,19 @@ def run_game():
     # After loop ends, display winner message
     window.fill(constants.RED)
 
-    # Determine the winner
+    # Determine the winner and output the result to a new window.
     if paddles.player_a_score >= 5:
-        winner_message = score_font.render("You beat the impossible!", True, constants.WHITE)
+        winner_message = score_font.render("You beat the impossible! Click to continue", True, constants.WHITE)
     else:
-        winner_message = score_font.render("You weren't good enough! ", True, constants.WHITE)
+        winner_message = score_font.render("You weren't good enough! Click anywhere to continue", True, constants.WHITE)
 
     # Display the winner message
-    window.blit(winner_message, (200, constants.WINDOW_HEIGHT * 0.5))
+    window.blit(winner_message, (90, constants.WINDOW_HEIGHT * 0.5))
 
     # Update the display.
     pygame.display.flip()
 
-    # Wait for a click to restart the game
+    # Wait for a click to re-enter the orginal game loop.
     waiting_for_click = True
     while waiting_for_click:
         for event in pygame.event.get():
@@ -117,20 +117,3 @@ def run_game():
 
 # Run the game again
 run_game()
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
