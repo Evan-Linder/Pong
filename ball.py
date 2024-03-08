@@ -24,10 +24,12 @@ def ball_movement():
     ball.x += ball_direction_x
     ball.y += ball_direction_y
 
+
     # Paddles (reverses x axis direction using colliderect only if it hits the paddle).
     if ball.colliderect(paddles.paddle_a) or ball.colliderect(paddles.paddle_b):
         ball_direction_x *= -1
     
+
     # Top and bottom (reverses y axis direction)
     if ball.top < 0:
         ball.top = 0
@@ -35,7 +37,9 @@ def ball_movement():
     elif ball.bottom > constants.WINDOW_HEIGHT:
         ball.bottom = constants.WINDOW_HEIGHT
         ball_direction_y *= -1
-    # Check if ball has gone out of bounds and reset if necessary.
+
+
+    # Check if ball has gone out of bounds add a point and reset if necessary.
     if ball.right > constants.WINDOW_WIDTH:
          paddles.player_a_score += 1
          reset_ball()

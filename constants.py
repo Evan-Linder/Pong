@@ -23,7 +23,3 @@ BALL_SPEED = 7
 # set fps tick
 FPS = 60
 
-# set button
-BUTTON_WIDTH = 100
-BUTTON_HEIGHT = 50
-

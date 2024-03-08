@@ -4,12 +4,7 @@ Pong Game
 Start date: 3/7/23
 End date: 
 '''
-
-
-import pygame
-import constants
-import ball
-import paddles
+import pygame, paddles, constants, ball
 
 # Initialize pygame: this is required.
 pygame.init()
@@ -31,32 +26,31 @@ while loop_active:
             loop_active = False
             pygame.quit()
 
-        # Check if the user clicks the screen to start the game
+     
+
+        # Check if the W or S key is pressed.
+        elif event.type == pygame.KEYDOWN and game_started:
+            if event.key == pygame.K_w:
+                paddles.paddle_direction_a -= constants.PADDLE_SPEED
+            elif event.key == pygame.K_s:
+                paddles.paddle_direction_a += constants.PADDLE_SPEED
+
+        # Stop paddle when key is unpressed (inverse math operations).
+        elif event.type == pygame.KEYUP and game_started:
+            if event.key == pygame.K_w:
+                paddles.paddle_direction_a += constants.PADDLE_SPEED
+            elif event.key == pygame.K_s:
+                paddles.paddle_direction_a -= constants.PADDLE_SPEED
+     	# Check if the user clicks the screen to start the game
         elif event.type == pygame.MOUSEBUTTONDOWN and not game_started:
             game_started = True
 
     # If game has started, execute game logic
     if game_started:
-        
-        # check if w or s is pressed.
-        for event in pygame.event.get(): 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_w:
-                    paddles.paddle_direction_a -= constants.PADDLE_SPEED
-                if event.key == pygame.K_s:
-                    paddles.paddle_direction_a += constants.PADDLE_SPEED
-            # check when the key is released.
-            elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_w:
-                    paddles.paddle_direction_a += constants.PADDLE_SPEED
-                if event.key == pygame.K_s:
-                    paddles.paddle_direction_a -= constants.PADDLE_SPEED
-        
-        # call the functions from other documents to simplify the code.
         paddles.paddle_a_movement()
         paddles.paddle_b_movement(ball)
         ball.ball_movement()
-        
+
         window.fill(constants.RED)
 
         pygame.draw.rect(window, constants.WHITE, paddles.paddle_a)
@@ -80,7 +74,6 @@ while loop_active:
         window.fill(constants.RED)
         start_message = score_font.render("Click anywhere to start the game", True, constants.WHITE)
         window.blit(start_message, (200, constants.WINDOW_HEIGHT * 0.5))
-      
 
         # Update the display.
         pygame.display.flip()
