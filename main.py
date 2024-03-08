@@ -63,6 +63,12 @@ while loop_active:
         paddle_b_score_image = score_font.render(f'Player 2: {paddles.player_b_score}', True, constants.WHITE)
         window.blit(paddle_b_score_image, (650, 20))
 
+
+
+        # check if player 1 or 2 has gotten to 5
+        if paddles.player_a_score >= 5 or paddles.player_b_score >= 5:
+            loop_active = False
+
         # Create a FPS controller to avoid lag and screen tearing on low-end PCs, set the FPS controller tick to 60 FPS.
         fps_controller = pygame.time.Clock()
         fps_controller.tick(constants.FPS)
@@ -77,6 +83,9 @@ while loop_active:
 
         # Update the display.
         pygame.display.flip()
+     
+
+
              
 
 

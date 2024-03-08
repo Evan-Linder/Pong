@@ -18,7 +18,7 @@ WHITE = (255, 255, 255)
 
 # set ball constants.
 BALL_SIZE = 10 
-BALL_SPEED = 7
+BALL_SPEED = 8
 
 # set fps tick
 FPS = 60
