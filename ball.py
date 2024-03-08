@@ -1,4 +1,4 @@
-import pygame, constants, paddles
+import pygame, constants, paddles, random
 
 
 
@@ -14,12 +14,18 @@ ball_direction_y = constants.BALL_SPEED
 
 # reset the ball to the center.
 def reset_ball():
+
+    global ball_direction_x, ball_direction_y
+    
     ball.center = ((constants.WINDOW_WIDTH * 0.5, constants.WINDOW_HEIGHT * 0.5))
+    ball_direction_x = random.choice([-1,1]) * constants.BALL_SIZE
+    ball_direction_y = random.choice([-1,1]) * constants.BALL_SIZE
 
 
-# make the ball bounce only off the paddles and top and bottom edge.
+
+# make the ball bounce only off the paddles and  the top/bottom edge.
 def ball_movement():
-    global ball_direction_x, ball_direction_y, player_a_score, player_b_score
+    global ball_direction_x, ball_direction_y
 
     ball.x += ball_direction_x
     ball.y += ball_direction_y
