@@ -41,7 +41,8 @@ while loop_active:
                 paddles.paddle_direction_a += constants.PADDLE_SPEED
             elif event.key == pygame.K_s:
                 paddles.paddle_direction_a -= constants.PADDLE_SPEED
-     	# Check if the user clicks the screen to start the game
+     	
+        # Check if the user clicks the screen to start the game
         elif event.type == pygame.MOUSEBUTTONDOWN and not game_started:
             game_started = True
 
@@ -53,6 +54,7 @@ while loop_active:
 
         window.fill(constants.RED)
 
+        #draw game objects
         pygame.draw.rect(window, constants.WHITE, paddles.paddle_a)
         pygame.draw.rect(window, constants.WHITE, paddles.paddle_b)
         pygame.draw.rect(window, constants.WHITE, ball.ball)
@@ -62,8 +64,6 @@ while loop_active:
         window.blit(paddle_a_score_image, (30, 20))
         paddle_b_score_image = score_font.render(f'Player 2: {paddles.player_b_score}', True, constants.WHITE)
         window.blit(paddle_b_score_image, (650, 20))
-
-
 
         # check if player 1 or 2 has gotten to 5
         if paddles.player_a_score >= 5 or paddles.player_b_score >= 5:
@@ -83,10 +83,31 @@ while loop_active:
 
         # Update the display.
         pygame.display.flip()
-     
 
 
-             
+
+window.fill(constants.RED)
+
+# Determine the winner
+if paddles.player_a_score >= 5:
+    winner_message = score_font.render("Player 1 is victorious!", True, constants.WHITE)
+elif paddles.player_b_score >= 5:
+    winner_message = score_font.render("Player 2 is victorious!", True, constants.WHITE)
+else:
+    winner_message = score_font.render("It's a draw!", True, constants.WHITE)
+
+# Display the winner message
+window.blit(winner_message, (200, constants.WINDOW_HEIGHT * 0.5))
+
+# Update the display.
+pygame.display.flip()
+
+# create event loop to keep window open.
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+
 
 
 
