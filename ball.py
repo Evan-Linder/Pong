@@ -19,8 +19,8 @@ def reset_ball():
     ball.center = ((constants.WINDOW_WIDTH * 0.5, constants.WINDOW_HEIGHT * 0.5))
 
     # asks for a random choice (-1,1), which allows the ball to randomly reset in a different direction. 
-    ball_direction_x = random.choice([-1,1]) * 4
-    ball_direction_y = random.choice([-1,1]) * 4
+    ball_direction_x = random.choice([-1,1]) * constants.BALL_SPEED
+    ball_direction_y = random.choice([-1,1]) * constants.BALL_SPEED
 
 
 
