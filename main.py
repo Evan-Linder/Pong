@@ -1,8 +1,8 @@
 '''
 Evan Linder
-Pong Impossible
-Start date: 3/7/23
-End date: 
+Pong 
+Start date: 3/6/24
+End date:
 '''
 import pygame, paddles, constants, ball
 
@@ -13,7 +13,7 @@ def run_game():
 
     # Setup the window: make it a tuple so it is unmutable and avoid errors.
     window = pygame.display.set_mode((constants.WINDOW_WIDTH, constants.WINDOW_HEIGHT))
-    pygame.display.set_caption("Pong Impossible")
+    pygame.display.set_caption("Pong")
 
     score_font = pygame.font.SysFont(None, 36)
 
@@ -92,7 +92,7 @@ def run_game():
     if paddles.player_a_score >= 5:
         winner_message = score_font.render("You beat the impossible! Click to continue", True, constants.WHITE)
     else:
-        winner_message = score_font.render("You weren't good enough! Click anywhere to continue", True, constants.WHITE)
+        winner_message = score_font.render("You weren't good enough! Click to continue", True, constants.WHITE)
 
     # Display the winner message
     window.blit(winner_message, (90, constants.WINDOW_HEIGHT * 0.5))
